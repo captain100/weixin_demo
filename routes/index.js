@@ -41,6 +41,13 @@ router.get('/heartqOl',function(req,res,next){
 				d:'A Lot'
 			}	
 		}]});
+});
+router.get('/admin',function(req,res){
+	res.render('admin',{});
 })
+router.get('/new',function(req,res){
+	res.render('create',{});
+})
+
 
 module.exports = router;
