@@ -65,7 +65,7 @@ app.use('/wechat', wechat(config, function (req, res, next) {
         title: '你来我家接我吧',
         description: '这是女神与高富帅之间的对话',
         picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
-        url: 'http://127.0.0.1/heartqOl'
+        url: 'http://123.56.227.132/heartqOl'
       }
     ]);
   }
