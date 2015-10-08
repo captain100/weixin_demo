@@ -36,6 +36,7 @@ app.use('/wechat', wechat(config, function (req, res, next) {
   console.log(11111111111)
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
+  console.log(message);
   if (message.FromUserName === 'diaosi') {
     // 回复屌丝(普通回复)
     res.reply('hehe');
@@ -64,7 +65,7 @@ app.use('/wechat', wechat(config, function (req, res, next) {
         title: '你来我家接我吧',
         description: '这是女神与高富帅之间的对话',
         picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
-        url: 'http://nodeapi.cloudfoundry.com/'
+        url: 'http://127.0.0.1/heartqOl'
       }
     ]);
   }
