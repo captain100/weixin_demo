@@ -4,17 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var auth = require('./routes/auth');
+var wechat = require('./routes/wechat');
 
 var app = express();
-var wechat = require('wechat');
-var config = {
-    token:'testqiushi',//开发者 token
-    appid:'wxfaf11f0ec66a40eb',// appid
-    encodingAESKey:'hMgmYbOGPRcMe63oaApmzi2yrUxrCqZcY8ssrDYI83H'//encodingAESKey
-};
+
 
 
 // view engine setup
@@ -28,48 +27,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret:'admin_user', cookie:{maxAge:60000}}));
+app.use(passport.initialize());
+app.use(passport.session());
+//微信解析
+app.use(express.query());
 
+//系统基础路由
 app.use('/', routes);
 app.use('/users', users);
-app.use(express.query());
-app.use('/wechat', wechat(config, function (req, res, next) {
-  console.log(11111111111)
-  // 微信输入信息都在req.weixin上
-  var message = req.weixin;
-  console.log(message);
-  if (message.Content === 'diaosi') {
-    // 回复屌丝(普通回复)
-    res.reply('hehe');
-  } else if (message.Content === 'text') {
-    //你也可以这样回复text类型的信息
-    res.reply({
-      content: 'text object',
-      type: 'text'
-    });
-  } else if (message.Content === 'hehe') {
-    // 回复一段音乐
-    res.reply({
-      type: "music",
-      content: {
-        title: "来段音乐吧",
-        description: "一无所有",
-        musicUrl: "http://mp3.com/xx.mp3",
-        hqMusicUrl: "http://mp3.com/xx.mp3",
-        thumbMediaId: "thisThumbMediaId"
-      }
-    });
-  } else {
-    // 回复高富帅(图文回复)
-    res.reply([
-      {
-        title: '健康测试',
-        description: '开来对你的健康状况进行一个测试吧',
-        picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
-        url: 'http://123.56.227.132/heartqOl'
-      }
-    ]);
-  }
-}));
+//微信后台信息
+app.use('/wechat', wechat);
+//用户认证路由
+app.use('/auth',auth);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
