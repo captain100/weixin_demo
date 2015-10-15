@@ -37,7 +37,7 @@ app.use(express.query());
 app.use('/', routes);
 app.use('/users', users);
 //微信后台信息
-app.use('/wechat', wechat);
+app.use('/wechat', wechat.weixin);
 //用户认证路由
 app.use('/auth',auth);
 // catch 404 and forward to error handler

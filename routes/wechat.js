@@ -5,7 +5,8 @@ var config = {
     encodingAESKey:'hMgmYbOGPRcMe63oaApmzi2yrUxrCqZcY8ssrDYI83H'//encodingAESKey
 };
 
-wechat(config, function (req, res, next) {
+exports.weixin = function(req,res){
+  wechat(config, function (req, res, next) {
   console.log(11111111111)
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
@@ -31,5 +32,7 @@ wechat(config, function (req, res, next) {
     ]);
   }
 })
+}
 
-module.exports = wechat;
+
+// module.exports = wechat;
