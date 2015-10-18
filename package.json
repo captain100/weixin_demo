@@ -27,6 +27,7 @@
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "passport-wechat": "^2.0.0",
+    "request": "^2.65.0",
     "serve-favicon": "~2.3.0",
     "wechat": "^2.0.1"
   }
