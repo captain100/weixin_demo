@@ -77,19 +77,28 @@ $(function () {
         //    console.log(e);
         //});
 
-        $.ajax({
-            type: "POST",
-            url: "http://192.168.0.101:8081/admin/paper/create",
-            headers:{'Content-Type':'application/json'},
-            processData:false,
-            data: data,
-            success: function(msg){
-                console.log( "Data Saved: " + msg );
-            },
-            error:function(msg){
-                console.log(msg);
-            }
-        });
+        //$.ajax({
+        //    type: "POST",
+        //    url: "http://123.56.227.132:8080/admin/paper/create",
+        //    headers:{'Content-Type':'application/json'},
+        //    processData:false,
+        //    data: {
+        //        "paperTitle": title,
+        //        "desc": detailed,
+        //        "questionList":questionList
+        //
+        //    },
+        //    dataType: 'JSONP',
+        //    success: function(msg){
+        //        console.log( "Data Saved: " + msg );
+        //    },
+        //    error:function(msg){
+        //        console.log(msg);
+        //    }
+        //});
+        $.post('/insert',{data:data},function(e){console.log(e)}).done(function(){
+            alert('success');
+        })
     })
 
 
