@@ -16,7 +16,7 @@ var app = express();
 
 var wechat = require('wechat');
 var config = {
-    token:'testqiushi',//开发者 token
+    token:'testnewqiushi',//开发者 token
     appid:'wxfaf11f0ec66a40eb',// appid
     encodingAESKey:'WqqUlXFr2jjmcOEWHK94mqy78txdwWfuQZCJlog2eAI'//encodingAESKey
 };
