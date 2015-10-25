@@ -3,11 +3,9 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title><%=paperTitle%></title>
+	<title><%=data.paperTitle%></title>
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="../javascripts/bootstrap/dist/css/bootstrap.min.css">
-
-	
 </head>
 <body>
 	<style type="text/css">
@@ -49,69 +47,43 @@
 
 	</style>
 	<div class="TopBgTile">
-		<div class="title"><%=paperTitle%></div>
+		<input type="hidden" id="paperId" value="<%=data.paperId%>">
+		<div class="title"><%=data.paperTitle%></div>
 	</div> 
 	<div class="content">
 		<div class="project_title">
-			<p>Thank you for addressing these questions that will give us an understanding of how your heart problem has affected you.</p>
+			<p><%=data.desc%></p>
 		</div>
+		<% var question = data.questionList%>
 
-
-
-		<% for(var i =0 ;i<questionList.length;i++){ %>
+		<% for(var i =0,j=0 ;i< question.length;i++){ %>
 		<div class='question'>
+			<%if(question[i].type == '1'){%>
 			<div class="topic_title">
-				<%= i+1 %>. <%= questionList[i].title %>
+				Q<%= j+1 %>. <%= question[i].title %>
+				<% j++%>
 			</div>
-			<div class="topic_con radio_wrap">
+			<div class="topic_con radio_wrap" data-questionId ="<%=question[i].questionId%>" >
 				<ul class="unstyled">
-					<li>
-						<div class="radio">
-						  <label>
-						    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" unchecked>
-						    <%= questionList[i].option[0].text%>
-						  </label>
-						</div>
-					</li>
-					<li>
-						<div class="radio">
-						  <label>
-						    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" unchecked>
-						    <%= questionList[i].option[1].text%>
-						  </label>
-						</div>
-					</li>
-					<li>
-						<div class="radio">
-						  <label>
-						    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" unchecked>
-						    <%= questionList[i].option[2].text%>
-						  </label>
-						</div>
-					</li>
-					<li>
-						<div class="radio">
-						  <label>
-						    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" unchecked>
-						    <%= questionList[i].option[3].text%>
-						  </label>
-						</div>
-					</li>
+					<%for(var w = 0;w<question[i].option.length;w++){%>
+					<div class="radio">
+						<label>
+							<input type="radio" name="<%=question[i].questionId%>"  value="<%=question[i].option[w].value%>" data-location="<%=question[i].option[w].location%>">
+							<%= question[i].option[w].text%>
+						</label>
+					</div>
+					<%}%>
 				</ul>
 			</div>
-
+				<% }else{%>
+			<div class="topic_title">
+				 <%= question[i].title %>
+			</div>
+			<% } %>
 		</div>
 		<% } %>
-
-
 		<div class="btn btn-info sub_btn">提交答卷</div>
 	</div>
-
-
-
-
-
-
 
 
 
@@ -120,11 +92,7 @@
 
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="../javascripts/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../javascripts/submit.js"></script>
 
-	<script >
-	$(document).ready(function(){
-	  
-	});
-	</script>
 </body>
 </html>
