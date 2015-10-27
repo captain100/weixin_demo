@@ -10,12 +10,13 @@ var session = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var config = require('./config');
 // var wechat = require('./routes/wechat');
 
 var app = express();
 
 var wechat = require('wechat');
-var config = {
+var wechat_config = {
     token:'testnewqiushi',//开发者 token
     appid:'wxb4fb29266130bb85',// appid
     encodingAESKey:'BahC4uNa3dY6wo5U3mRpVf4yxkQtXs6OyDXEe2GudmR'//encodingAESKey
@@ -42,7 +43,7 @@ app.use(express.query());
 app.use('/', routes);
 app.use('/users', users);
 //微信后台信息
-app.use('/wechat',wechat(config, function (req, res, next) {
+app.use('/wechat',wechat(wechat_config, function (req, res, next) {
   console.log(11111111111)
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
