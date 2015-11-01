@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../stylesheets/schedule.css"/>
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="../javascripts/jquery/dist/jquery.min.js"></script>
+    <script src="../javascripts/schedule.js"></script>
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="../javascripts/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -20,7 +21,7 @@
     <div class="schedule">
         <ul>
             <%for(var i = 0;i<list.length;i++ ){%>
-                <li ><a href="<%=list[i].url%>" ><%=list[i].EGtitle %></a><div class="icon_done"><span class="glyphicon glyphicon-ok"></span></div></li>
+                <li ><a class="shijian" href="<%=list[i].url%>" data-type="<%=list[i].type%>" ><%=list[i].EGtitle %></a><div class="icon_done"><span class="glyphicon glyphicon-ok"></span></div></li>
             <%}%>
         </ul>
 

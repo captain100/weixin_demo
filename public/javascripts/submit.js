@@ -16,7 +16,7 @@ $(function() {
                 "value": value,
                 "location": location
 
-            }
+            };
             answers.push(answer);
         }
         var data = {
@@ -24,13 +24,13 @@ $(function() {
             'taskNo':taskNo,
             'paperId':paperId,
             'answers':answers
-        }
+        };
         $.get('/subPaper',{data:data},function(e){
             if(e){
                 var flag = confirm('确认是否提交？');
                 console.log(flag);
                 if(flag){
-                    window.location.href='http://123.56.227.132/schedule';
+                    window.location.href='/schedule';
                 }
             }
 
