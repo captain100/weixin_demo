@@ -17,9 +17,9 @@ var app = express();
 
 var wechat = require('wechat');
 var wechat_config = {
-    token:'testnewqiushi',//开发者 token
-    appid:'wxb4fb29266130bb85',// appid
-    encodingAESKey:'BahC4uNa3dY6wo5U3mRpVf4yxkQtXs6OyDXEe2GudmR'//encodingAESKey
+    token: 'testnewqiushi',//开发者 token
+    appid: 'wxb4fb29266130bb85',// appid
+    encodingAESKey: 'BahC4uNa3dY6wo5U3mRpVf4yxkQtXs6OyDXEe2GudmR'//encodingAESKey
 };
 
 // view engine setup
@@ -30,10 +30,10 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret:'admin_user', cookie:{maxAge:60000}}));
+app.use(session({secret: 'admin_user', cookie: {maxAge: 60000}}));
 app.use(passport.initialize());
 app.use(passport.session());
 //微信解析
@@ -43,39 +43,48 @@ app.use(express.query());
 app.use('/', routes);
 app.use('/users', users);
 //微信后台信息
-app.use('/wechat',wechat(wechat_config, function (req, res, next) {
-  console.log(11111111111)
-  // 微信输入信息都在req.weixin上
-  var message = req.weixin;
-  console.log(message);
-  if (message.Content === 'qiushi') {
-    // 回复qiushi(普通回复)
-    res.reply('hehe');
-  } else if (message.Content === 'text') {
-    //你也可以这样回复text类型的信息
-    res.reply({
-      content: 'text object',
-      type: 'text'
-    });
-  } else {
-    // 回复高富帅(图文回复)
-    res.reply([
-      {
-        title: '健康测试',
-        description: '开来对你的健康状况进行一个测试吧',
-        picurl: 'http://123.56.227.132/images/question.jpg',
-        url: 'http://123.56.227.132/heartqOl'
-      }
-    ]);
-  }
+app.use('/wechat', wechat(wechat_config, function (req, res, next) {
+    console.log(11111111111)
+    // 微信输入信息都在req.weixin上
+    var message = req.weixin;
+    console.log(message);
+    if (message.Content === 'qiushi') {
+        // 回复qiushi(普通回复)
+        res.reply('hehe');
+    } else if (message.Content === '是') {
+        //你也可以这样回复text类型的信息
+        res.reply({
+            title: 'Schedule Day 1',
+            description: '今天是个重要的日子，你有一些事情需要完成快来查看。',
+            picurl: 'http://123.56.227.132/images/question.jpg',
+            url: 'http://123.56.227.132/schedule'
+        });
+    } else if (message.Content === 'schedule day1') {
+        res.reply({
+            title: 'Schedule Day 1',
+            description: '今天是个重要的日子，你有一些事情需要完成快来查看。',
+            picurl: 'http://123.56.227.132/images/question.jpg',
+            url: 'http://123.56.227.132/schedule'
+        });
+    } else {
+        // 回复高富帅(图文回复)
+        res.reply([
+            {
+                title: '健康测试',
+                description: '开来对你的健康状况进行一个测试吧',
+                picurl: 'http://123.56.227.132/images/question.jpg',
+                url: 'http://123.56.227.132/heartqOl'
+            }
+        ]);
+    }
 }));
 //用户认证路由
-app.use('/auth',auth);
+app.use('/auth', auth);
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -83,25 +92,25 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
-app.listen(3000,function(){
-  console.log('service port 3000 has start');
+app.listen(3000, function () {
+    console.log('service port 3000 has start');
 })

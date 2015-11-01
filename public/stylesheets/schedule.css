@@ -1,0 +1,64 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+div {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
+}
+ul, ol, li {
+    padding-left: 0px;
+    list-style-type: none;
+}
+
+.schedule {
+    width: 100%;
+}
+.schedule ul{
+    margin-top: 20px;
+    border-top: solid 1px #eee;
+}
+
+.schedule li {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    border-bottom: solid 1px #eee;
+}
+
+.schedule li a {
+    width: 80%;
+    height: 100%;
+    padding-left:10px;
+    padding-top:12px ;
+    padding-bottom: 10px;
+    display: block;
+    font-size: 17px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    text-align: left;
+    color: #000;
+    float: left;
+}
+.schedule li .icon_done{
+    width: 20%;
+    height: auto;
+    padding-right:0px;
+    padding-top:12px ;
+    float: right;
+    display: block;
+}
+.schedule li span{
+    width: 40px;
+    height: 40px;
+    display: inline;
+    float: right;
+}

@@ -162,6 +162,75 @@ router.post('/insert', function (req, res) {
         }
     });
 });
+//推送消息接口
+router.get('/pushMsg',function(req,res){
+    var APPID = 'wxb4fb29266130bb85',
+        APPSECRET = '675f1cd7edfcaba17b987c44c83e0a6b';
+
+    var url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+APPID+'&secret='+APPSECRET;
+    request.get(url,function(error,response,body){
+        if (!error && response.statusCode == 200) {
+            body = JSON.parse(body);
+            var accsessToken = body.access_token;
+            var postUrl = 'https://api.weixin.qq.com/cgi-bin/message/mass/preview?access_token='+accsessToken;
+            var data = {
+                "touser":"oewo7wPJosZXZMem-JzRsvGKU7Sk",
+                "mpnews":{
+                    "media_id":"4u_X2dzhCm5wZHmHszBGzFS5qyh490kkw1_yRAgYWuwsbcGGwVekHtFTQCxLpuEA"
+                },
+                "msgtype":"mpnews"
+            }
+            var options = {
+                url:postUrl,
+                method:'POST',
+                json: true,
+                body: data
+            };
+            console.log(accsessToken)
+            request(options,function(err,resp,info){
+                console.log(err,resp,info);
+
+            });
+
+
+        }
+
+    });
+});
+
+//schdule列表
+router.get('/schedule',function(req,res){
+    var list  =[{
+        title:'Clinic Visit',
+        isDone:false,
+        url:'http://www.baidu.com',
+        type:'',
+        icon:'',
+        actionID:'12345678'
+    },{
+        title:'Informed Consent ',
+        isDone:false,
+        url:'http://www.baidu.com',
+        type:'',
+        icon:'',
+        actionID:'12345678'
+    },{
+        title:'Inclusion Exclusion Criterica',
+        isDone:false,
+        url:'http://www.baidu.com',
+        type:'',
+        icon:'',
+        actionID:'12345678'
+    },{
+        title:'Medical Surgical History/Demographics',
+        isDone:false,
+        url:'http://www.baidu.com',
+        type:'',
+        icon:'',
+        actionID:'12345678'
+    }];
+    res.render('schedule',{list:list});
+});
 
 
 module.exports = router;
