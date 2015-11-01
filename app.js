@@ -53,19 +53,19 @@ app.use('/wechat', wechat(wechat_config, function (req, res, next) {
         res.reply('hehe');
     } else if (message.Content === '是') {
         //你也可以这样回复text类型的信息
-        res.reply({
+        res.reply([{
             title: 'Schedule Day 1',
             description: '今天是个重要的日子，你有一些事情需要完成快来查看。',
             picurl: 'http://123.56.227.132/images/question.jpg',
             url: 'http://123.56.227.132/schedule'
-        });
+        }]);
     } else if (message.Content === 'schedule day1') {
-        res.reply({
+        res.reply([{
             title: 'Schedule Day 1',
             description: '今天是个重要的日子，你有一些事情需要完成快来查看。',
             picurl: 'http://123.56.227.132/images/question.jpg',
             url: 'http://123.56.227.132/schedule'
-        });
+        }]);
     } else {
         // 回复高富帅(图文回复)
         res.reply([
