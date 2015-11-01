@@ -236,7 +236,7 @@ router.get('/schedule',function(req,res){
         EGdesc:'Do you have been M?',
         CHdesc:'你今天是否去诊所进行一下检查？',
         isDone:false,
-        url:'http://123.56.227.132/schedule',
+        url:'/heartqOl',
         type:'question',
         icon:'',
         actionID:'12345678'
