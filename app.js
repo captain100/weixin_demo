@@ -68,14 +68,10 @@ app.use('/wechat', wechat(wechat_config, function (req, res, next) {
         }]);
     } else {
         // 回复高富帅(图文回复)
-        res.reply([
-            {
-                title: '健康测试',
-                description: '开来对你的健康状况进行一个测试吧',
-                picurl: 'http://123.56.227.132/images/question.jpg',
-                url: 'http://123.56.227.132/heartqOl'
-            }
-        ]);
+        res.reply({
+            content: '欢迎你加入由XX公司提供的XX试验。在此之前请确认你是否已经在你的主治医师的指导下签署书面合同已经签署请\n回复：是\n否则请联系你的主治医师',
+            type: 'text'
+        });
     }
 }));
 //用户认证路由
@@ -113,4 +109,4 @@ app.use(function (err, req, res, next) {
 
 app.listen(3000, function () {
     console.log('service port 3000 has start');
-})
+});
