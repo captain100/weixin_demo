@@ -35,8 +35,8 @@ router.get('/subPaper',function(req,res){
     };
     request(options, function (error, response, data) {
         if (!error && response.statusCode == 200) {
-            console.log('----info------', data);
-            res.end();
+            //console.log('----info------', data);
+            res.json(200,{info:data});
         }
     });
 
@@ -201,31 +201,53 @@ router.get('/pushMsg',function(req,res){
 //schdule列表
 router.get('/schedule',function(req,res){
     var list  =[{
-        title:'Clinic Visit',
+        EGtitle:'Clinic Visit',
+        CHtitle:'去诊所',
+        EGdesc:'Do you have been to clinic?',
+        CHdesc:'你今天是否去诊所进行一下检查？',
         isDone:false,
-        url:'http://www.baidu.com',
-        type:'',
+        url:'',
+        type:'alert',
         icon:'',
         actionID:'12345678'
     },{
-        title:'Informed Consent ',
+        EGtitle:'Inclusion Exclusion Criterica',
+        CHtitle:'去诊所',
+        EGdesc:'Do you have been Inclusion Exclusion Criterica?',
+        CHdesc:'你今天是否去诊所进行一下检查？',
         isDone:false,
-        url:'http://www.baidu.com',
-        type:'',
+        url:'',
+        type:'alert',
         icon:'',
         actionID:'12345678'
     },{
-        title:'Inclusion Exclusion Criterica',
+        EGtitle:'Medical Surgical History/Demographics',
+        CHtitle:'医学外科病史/人口统计',
+        EGdesc:'Do you have been Medical Surgical History/Demographics?',
+        CHdesc:'你今天是否去诊所进行一下检查？',
         isDone:false,
-        url:'http://www.baidu.com',
-        type:'',
+        url:'',
+        type:'alert',
         icon:'',
         actionID:'12345678'
     },{
-        title:'Medical Surgical History/Demographics',
+        EGtitle:'Start Questionnaire',
+        CHtitle:'进行问卷调查',
+        EGdesc:'Do you have been M?',
+        CHdesc:'你今天是否去诊所进行一下检查？',
         isDone:false,
-        url:'http://www.baidu.com',
-        type:'',
+        url:'http://localhost:3000/heartqOl',
+        type:'question',
+        icon:'',
+        actionID:'12345678'
+    },{
+        EGtitle:'HIV Rapid Antigen Text',
+        CHtitle:'进行问卷调查',
+        EGdesc:'Do you have been HIV Rapid Antigen Text?',
+        CHdesc:'你今天是否去诊所进行一下检查？',
+        isDone:false,
+        url:'',
+        type:'alert',
         icon:'',
         actionID:'12345678'
     }];

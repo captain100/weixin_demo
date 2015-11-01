@@ -26,7 +26,14 @@ $(function() {
             'answers':answers
         }
         $.get('/subPaper',{data:data},function(e){
-            console.log(e);
+            if(e){
+                var flag = confirm('确认是否提交？');
+                console.log(flag);
+                if(flag){
+                    window.location.href='http://123.56.227.132/schedule';
+                }
+            }
+
         })
 
     });
