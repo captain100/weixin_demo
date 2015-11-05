@@ -11,8 +11,7 @@ var enterprise_config = {
 router.use(wechatEnterprise(enterprise_config, function(req, res, next){
 	console.log(2222);
 	console.log(req);
-    res.writeHead(200);
-	res.end('hello node api');
+	res.redirect('http://www.baidu.com');
 }));
 
 module.exports = router;
