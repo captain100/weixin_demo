@@ -5,16 +5,11 @@ var config = {
     corpId: 'wx306a8629aca93739'
 }
 
-module.exports.wechart = function(){
-	console.log(11111111)
+wechat(config,function(req, res, next){
+	console.log(111111111);
+	console.log(req);
+    res.writeHead(200);
+	res.end('hello node api');
 
-
-	return wechat(config,function(req, res, next){
-		
-   		console.log(req);
-		res.writeHead(200);
-  		res.end('hello node api');
-
-	})
-
-};
+});
+module.exports = wechat;

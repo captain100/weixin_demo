@@ -43,7 +43,7 @@ app.use(express.query());
 //系统基础路由
 app.use('/', routes);
 app.use('/users', users);
-app.use('/wechartenterprise',wechartenterprise.wechart);
+app.use('/wechartenterprise',wechartenterprise);
 
 //微信后台信息
 app.use('/wechat', wechat(wechat_config, function (req, res, next) {
