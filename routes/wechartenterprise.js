@@ -1,7 +1,7 @@
 var wechat = require('wechat-enterprise');
 var config = {
-	token: 'FAy6aOWo6ybPf9DLy6H91lMJxDOOxg',
- 	encodingAESKey: 'EhLMzTCtIGMCioS8ZQPJrGrY2zVUKZomoo3zRIAXQgA',
+	token: 'S55eVsVnthwy1rf6D1o5AmnoR2r',
+ 	encodingAESKey: 'QqiPktpEjnX3pLV5LIAjBktq5bUVG1dJsKVw0C8H2nP',
     corpId: 'wx306a8629aca93739'
 }
 
