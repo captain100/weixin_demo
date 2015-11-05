@@ -11,17 +11,11 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var config = require('./config');
-// var wechartenterprise = require('./routes/wechartenterprise'); 
+var wechartenterprise = require('./routes/wechartenterprise'); 
 // var wechat = require('./routes/wechat');
 
 var app = express();
 
-var wechatEnterprise = require('wechat-enterprise');
-var enterprise_config = {
-    token: 'S55eVsVnthwy1rf6D1o5AmnoR2r',
-    encodingAESKey: 'QqiPktpEjnX3pLV5LIAjBktq5bUVG1dJsKVw0C8H2nP',
-    corpId: 'wx306a8629aca93739'
-}
 
 var wechat = require('wechat');
 var wechat_config = {
@@ -50,13 +44,7 @@ app.use(express.query());
 //系统基础路由
 app.use('/', routes);
 app.use('/users', users);
-app.use('/wechartenterprise',wechatEnterprise(enterprise_config,function(req, res, next){
-    console.log(111111111);
-    console.log(req);
-    res.writeHead(200);
-    res.end('hello node api');
-
-}));
+app.use('/wechartenterprise',wechartenterprise);
 
 //微信后台信息
 app.use('/wechat', wechat(wechat_config, function (req, res, next) {

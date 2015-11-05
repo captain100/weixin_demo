@@ -1,3 +1,6 @@
+var express = require('express');
+var router = express.Router();
+
 var wechatEnterprise = require('wechat-enterprise');
 var enterprise_config = {
 	token: 'S55eVsVnthwy1rf6D1o5AmnoR2r',
@@ -5,11 +8,12 @@ var enterprise_config = {
     corpId: 'wx306a8629aca93739'
 }
 
-wechatEnterprise(enterprise_config,function(req, res, next){
-	console.log(111111111);
+router.get('/',wechatEnterprise(enterprise_config, function(req, res, next){
+	console.log(2222);
 	console.log(req);
     res.writeHead(200);
 	res.end('hello node api');
+}));
 
-});
-module.exports = wechat;
+module.exports = router;
+
