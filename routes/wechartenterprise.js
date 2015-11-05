@@ -8,10 +8,10 @@ var enterprise_config = {
     corpId: 'wx306a8629aca93739'
 }
 
-router.use(wechatEnterprise(enterprise_config, function(req, res, next){
-	console.log(2222);
+router.use(wechatEnterprise(enterprise_config, function(req, res, next){;
 	console.log(req);
-	res.redirect('http://www.baidu.com');
+
+
 }));
 
 module.exports = router;
