@@ -8,7 +8,7 @@ var enterprise_config = {
     corpId: 'wx306a8629aca93739'
 }
 
-router.get('/',wechatEnterprise(enterprise_config, function(req, res, next){
+router.get('/ping',wechatEnterprise(enterprise_config, function(req, res, next){
 	console.log(2222);
 	console.log(req);
     res.writeHead(200);
