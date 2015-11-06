@@ -18,14 +18,16 @@ router.use(wechatEnterprise(enterprise_config, function(req, res, next){
 	var userId = message.FromUserName;
 	var AgentID  = message.AgentID;
 	console.log(message);
-	if(message){
+	if(message.Event ==='view'){
+		var api = new API(CorpID, Secret, AgentID);
+		api.getUser(userId, function (err, data, res) {
+	    var mobile = data.mobile;
+	    res.redirect('http://www.baidu.com');
+
+		});
 
 	}
-	var api = new API(CorpID, Secret, AgentID);
-	api.getUser(userId, function (err, data, res) {
-	    var mobile = data.mobile;
-	   console.log(mobile);
-	});
+	
 
 }));
 
