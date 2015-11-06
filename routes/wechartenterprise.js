@@ -13,16 +13,18 @@ var CorpID = 'wx306a8629aca93739';
 var Secret = 'iIChKj2NbXS74RlDHpr2_9f3r6VUIKbYueydJhQj58BqfUMuPnPvodEzbx0tUTq6';
 // 构造实例
 
-
-
 router.use(wechatEnterprise(enterprise_config, function(req, res, next){
 	var message = req.weixin;
 	var userId = message.FromUserName;
-	console.log('userId ='+userId);
 	var AgentID  = message.AgentID;
+	console.log(message);
+	if(message){
+
+	}
 	var api = new API(CorpID, Secret, AgentID);
 	api.getUser(userId, function (err, data, res) {
-	console.log(data);
+	    var mobile = data.mobile;
+	   console.log(mobile);
 	});
 
 }));
