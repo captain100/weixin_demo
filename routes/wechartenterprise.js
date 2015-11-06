@@ -20,7 +20,7 @@ router.use(wechatEnterprise(enterprise_config, function(req, res, next){
 	console.log(message);
 	if(message.Event ==='view'){
 		var api = new API(CorpID, Secret, AgentID);
-		api.getUser(userId, function (err, data, res) {
+		api.getUser(userId, function (err, data, resUser) {
 	    var mobile = data.mobile;
 	    res.reply({
             type:'view',
