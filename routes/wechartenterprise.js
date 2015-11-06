@@ -22,9 +22,10 @@ router.use(wechatEnterprise(enterprise_config, function(req, res, next){
 		var api = new API(CorpID, Secret, AgentID);
 		api.getUser(userId, function (err, data, res) {
 	    var mobile = data.mobile;
-	    res.redirect('http://www.baidu.com');
-
-		});
+	    res.reply({
+            type:'view',
+            url: 'http://123.56.227.132/schedule'
+        });
 
 	}
 	
