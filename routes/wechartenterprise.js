@@ -27,7 +27,9 @@ router.use(wechatEnterprise(enterprise_config, function(req, res, next){
             url: 'http://123.56.227.132/schedule'
         });
 
+	});
 	}
+
 	
 
 }));
