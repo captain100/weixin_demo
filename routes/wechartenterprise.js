@@ -21,18 +21,13 @@ router.use(wechatEnterprise(enterprise_config, function(req, res, next){
 	if(message.Event ==='view'){
 		var api = new API(CorpID, Secret, AgentID);
 		api.getUser(userId, function (err, data, resUser) {
-	    var mobile = data.mobile;
-	    res.reply({
-            type:'view',
-            url: 'http://123.56.227.132/schedule'
-        });
+	    console.log(data);
 
 	});
 	}
-
-	
-
 }));
+
+
 
 module.exports = router;
 
