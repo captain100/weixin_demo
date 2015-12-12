@@ -159,7 +159,7 @@ router.get('/schedule', function (req, res) {
         CHtitle: '医学外科病史/人口统计',
         EGdesc: 'Do you have been Medical Surgical History/Demographics?',
         CHdesc: '你今天是否去诊所进行一下检查？',
-        isDone: false,
+        isDone: true,
         url: '',
         type: 'alert',
         icon: '',

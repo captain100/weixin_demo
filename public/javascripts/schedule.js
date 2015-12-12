@@ -3,17 +3,8 @@
  */
 $(function(){
     $(".shijian").click(function(){
-        var type = $(this).attr('data-type');
-        if(type==='alert'){
-            //var isDone = confirm('是否完成此项任务');
-            //if(isDone){
-            //
-            //
-            //}else{
-            //
-            //}
-        }
-        $()
-
+        var collpase = $(this).attr('data-href');
+        //alert(collpase);
+        $(collpase).collapse('toggle');
     })
 });

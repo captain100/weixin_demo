@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>问卷列表页</title>
+    <title>今日任务</title>
 
 
     <link rel="stylesheet" href="../javascripts/bootstrap/dist/css/bootstrap.min.css">
@@ -38,13 +38,18 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% for(var i = 0 ; i < list.length; i++){ %>
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="heading<%= i %>">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>"
+        <div class="panel-heading shijian" role="tab" data-href="#collapse<%= i %>" id="heading<%= i %>">
+            <h4 class="panel-title" >
+                <a role="button" data-toggle="collapse" data-parent="#accordion"
                    aria-expanded="false" aria-controls="collapse<%= i %>">
                     <%= list[i].CHtitle %>
                 </a>
             </h4>
+            <% if(!list[i].isDone) {%>
+            <span style="color: #f19b2a">待做</span>
+            <%}else{%>
+            <span style="color:#9cf166">完成</span>
+            <%}%>
         </div>
         <div id="collapse<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= i %>">
             <div class="panel-body">
