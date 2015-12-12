@@ -132,29 +132,19 @@ router.get('/pushMsg', function (req, res) {
     });
 });
 
-router.post('/push/:openid',function(req,res){
+router.post('/push/:openid', function (req, res) {
     console.log(11111111)
     var openid = req.param('openid');
     var articles = req.body.articles;
-    api.sendNews(openid, articles, function(err,result){
+    api.sendNews(openid, articles, function (err, result) {
         console.log(result);
-        res.json(200,result);
+        res.json(200, result);
     });
 });
 
 //schdule列表
 router.get('/schedule', function (req, res) {
     var list = [{
-        EGtitle: 'Clinic Visit',
-        CHtitle: '去诊所',
-        EGdesc: 'Do you have been to clinic?',
-        CHdesc: '你今天是否去诊所进行一下检查？',
-        isDone: false,
-        url: '',
-        type: 'alert',
-        icon: '',
-        actionID: '12345678'
-    }, {
         EGtitle: 'Inclusion Exclusion Criterica',
         CHtitle: '去诊所',
         EGdesc: 'Do you have been Inclusion Exclusion Criterica?',
@@ -197,10 +187,6 @@ router.get('/schedule', function (req, res) {
     }];
     res.render('schedule', {list: list});
 });
-
-
-
-
 
 
 module.exports = router;

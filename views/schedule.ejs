@@ -15,19 +15,58 @@
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="../javascripts/bootstrap/dist/js/bootstrap.min.js"></script>
-
 </head>
 <body>
-    <div class="schedule">
-        <ul>
-            <%for(var i = 0;i<list.length;i++ ){%>
-                <li ><a class="shijian" href="<%=list[i].url%>" data-type="<%=list[i].type%>" ><%=list[i].EGtitle %></a><div class="icon_done"><span class="glyphicon glyphicon-ok"></span></div></li>
-            <%}%>
-        </ul>
+<!--<div class="schedule">-->
+<!--<ul>-->
+<!--<% for(var i = 0;i < list.length;i++ ){ %>-->
+<!--<li><a class="shijian" href="<%= list[i].url %>" data-type="<%= list[i].type %>"><%= list[i].EGtitle %></a>-->
 
+<!--<div class="icon_done"><span class="glyphicon glyphicon-ok"></span></div>-->
+<!--</li>-->
+<!--<li class="show_info" id=<%= i %>>-->
+<!--<div >-->
+<!--<div class="show_info_head"></div>-->
+<!--<div class="snow_info_controller"></div>-->
+<!--</div>-->
+<!--</li>-->
+<!--<% } %>-->
+<!--</ul>-->
+
+<!--</div>-->
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% for(var i = 0 ; i < list.length; i++){ %>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading<%= i %>">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>"
+                   aria-expanded="false" aria-controls="collapse<%= i %>">
+                    <%= list[i].CHtitle %>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= i %>">
+            <div class="panel-body">
+                <%= list[i].CHdesc %>
+                <% if (list[i].type == 'alert'){ %>
+                <div class="action-controller col-sm-12">
+                    <a href="" class="btn btn-warning col-sm-offset-1 col-sm-4">取消</a>
+                    <a href="" class="btn btn-success col-sm-offset-7 col-sm-4">完成</a>
+                </div>
+                <% } %>
+                <% if (list[i].type == 'question'){ %>
+                <div class="action-controller col-sm-12">
+                    <a href="<%= list[i].url %>" class="btn btn-primary col-sm-offset-3 col-sm-6">进行问卷调查</a>
+                </div>
+                <% } %>
+
+            </div>
+        </div>
     </div>
+    <% } %>
 
-
+</div>
 
 </body>
 </html>

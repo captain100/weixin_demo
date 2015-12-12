@@ -63,3 +63,10 @@ ul, ol, li {
     float: right;
     color: #0e850f;
 }
+.show_info{
+    display: none;
+    width: 100%;
+    background-color: #eee;
+    line-height: 0;
+}
+
