@@ -42,7 +42,7 @@
             <h4 class="panel-title" >
                 <a role="button" data-toggle="collapse" data-parent="#accordion"
                    aria-expanded="false" aria-controls="collapse<%= i %>">
-                    <%= list[i].CHtitle %>
+                    <%= list[i].chTitle %>
                 </a>
             </h4>
             <% if(!list[i].isDone) {%>
@@ -53,7 +53,7 @@
         </div>
         <div id="collapse<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= i %>">
             <div class="panel-body">
-                <%= list[i].CHdesc %>
+                <%= list[i].chDesc %>
                 <% if (list[i].type == 'alert'){ %>
                 <div class="action-controller col-sm-12">
                     <a href="" class="btn btn-warning col-sm-offset-1 col-sm-4">取消</a>

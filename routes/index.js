@@ -134,7 +134,7 @@ router.get('/pushMsg', function (req, res) {
 
 //推送模版消息
 router.post('/template/:openid',function(req, res) {
-    console.log(11111111)
+    console.log('推送消息已到达')
     var templateId = '9JDP4C0Q82qwj9AdZEPfOphLrhg1APAanwFZHwA059s';
     // URL置空，则在发送后,点击模板消息会进入一个空白页面（ios）, 或无法点击（android）
     var url = '';
@@ -157,8 +157,10 @@ router.post('/template/:openid',function(req, res) {
         }
     };
     var openid = req.param('openid');
-    api.sendTemplate(openid, templateId, url, data, function(err, res){
-        console.log(result);
+    console.log('openid',openid);
+    api.sendTemplate(openid, templateId, url, data, function(err, result){
+        console.log('error',err);
+        console.log('result', result);
         res.json(200, result);
     });
 });
@@ -175,48 +177,54 @@ router.post('/push/:openid', function (req, res) {
 
 //schdule列表
 router.get('/schedule', function (req, res) {
-    var list = [{
-        EGtitle: 'Inclusion Exclusion Criterica',
-        CHtitle: '去诊所',
-        EGdesc: 'Do you have been Inclusion Exclusion Criterica?',
-        CHdesc: '你今天是否去诊所进行一下检查？',
-        isDone: false,
-        url: '',
-        type: 'alert',
-        icon: '',
-        actionID: '12345678'
-    }, {
-        EGtitle: 'Medical Surgical History/Demographics',
-        CHtitle: '医学外科病史/人口统计',
-        EGdesc: 'Do you have been Medical Surgical History/Demographics?',
-        CHdesc: '你今天是否去诊所进行一下检查？',
-        isDone: true,
-        url: '',
-        type: 'alert',
-        icon: '',
-        actionID: '12345678'
-    }, {
-        EGtitle: 'Start Questionnaire',
-        CHtitle: '进行问卷调查',
-        EGdesc: 'Do you have been M?',
-        CHdesc: '你今天是否去诊所进行一下检查？',
-        isDone: false,
-        url: '/heartqOl',
-        type: 'question',
-        icon: '',
-        actionID: '12345678'
-    }, {
-        EGtitle: 'HIV Rapid Antigen Text',
-        CHtitle: '进行问卷调查',
-        EGdesc: 'Do you have been HIV Rapid Antigen Text?',
-        CHdesc: '你今天是否去诊所进行一下检查？',
-        isDone: false,
-        url: '',
-        type: 'alert',
-        icon: '',
-        actionID: '12345678'
-    }];
-    res.render('schedule', {list: list});
+    //var list = [{
+    //    EGtitle: 'Inclusion Exclusion Criterica',
+    //    CHtitle: '去诊所',
+    //    EGdesc: 'Do you have been Inclusion Exclusion Criterica?',
+    //    CHdesc: '你今天是否去诊所进行一下检查？',
+    //    isDone: false,
+    //    url: '',
+    //    type: 'alert',
+    //    icon: '',
+    //    actionID: '12345678'
+    //}, {
+    //    EGtitle: 'Medical Surgical History/Demographics',
+    //    CHtitle: '医学外科病史/人口统计',
+    //    EGdesc: 'Do you have been Medical Surgical History/Demographics?',
+    //    CHdesc: '你今天是否去诊所进行一下检查？',
+    //    isDone: true,
+    //    url: '',
+    //    type: 'alert',
+    //    icon: '',
+    //    actionID: '12345678'
+    //}, {
+    //    EGtitle: 'Start Questionnaire',
+    //    CHtitle: '进行问卷调查',
+    //    EGdesc: 'Do you have been M?',
+    //    CHdesc: '你今天是否去诊所进行一下检查？',
+    //    isDone: false,
+    //    url: '/heartqOl',
+    //    type: 'question',
+    //    icon: '',
+    //    actionID: '12345678'
+    //}, {
+    //    EGtitle: 'HIV Rapid Antigen Text',
+    //    CHtitle: '进行问卷调查',
+    //    EGdesc: 'Do you have been HIV Rapid Antigen Text?',
+    //    CHdesc: '你今天是否去诊所进行一下检查？',
+    //    isDone: false,
+    //    url: '',
+    //    type: 'alert',
+    //    icon: '',
+    //    actionID: '12345678'
+    //}];
+    var url = config.server+"/info/task/userCurrentList?userAccount=userAccount11&projectUniqNo=123$1&scheduleCount=1";
+    request.get({url:url},function(error,response, info){
+        if (!error && response.statusCode == 200) {
+            info = JSON.parse(info);
+            res.render('schedule', {list: info.data.listCount});
+        }
+    })
 });
 
 
