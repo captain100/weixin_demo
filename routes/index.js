@@ -140,19 +140,19 @@ router.post('/template/:openid',function(req, res) {
     var url = '';
     var data = {
         "first": {
-            "value":"恭喜你购买成功！",
+            "DATA":"第一天的任务列表",
             "color":"#173177"
         },
         "keyword1":{
-            "value":"巧克力",
+            "DATA":"巧克力",
             "color":"#173177"
         },
         "keyword2": {
-            "value":"2014年9月22日",
+            "DATA":"2014年9月22日",
             "color":"#173177"
         },
         "remark":{
-            "value":"欢迎再次购买！",
+            "DATA":"欢迎再次购买！",
             "color":"#173177"
         }
     };
