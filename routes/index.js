@@ -10,8 +10,9 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/heartqOl', function (req, res, next) {
+    console.log('get heart')
     //http://192.168.0.101:8081/info/paper/getPaperContent?paperId=157&taskNo=1234&userAccount=testUser
-    request.get({url: config.server + '/info/paper/getPaperContent?paperId=157&taskNo=1234&userAccount=testUser'}, function (err, response, body) {
+    request.get({url: config.server + '/info/paper/getPaperContent?paperId='+req.query.paperId+'&taskNo='+req.query.taskNo+'&userAccount='+req.query.userAccount}, function (err, response, body) {
         console.log(body);
         body = JSON.parse(body);
         console.log(body.data);
@@ -222,6 +223,7 @@ router.get('/schedule', function (req, res) {
     //}];
     var url = config.server+"/info/task/userCurrentList?userAccount=userAccount11&projectUniqNo=123$1&scheduleCount=1";
     request.get({url:url},function(error,response, info){
+        if(error)res.json({error:error});
         if (!error && response.statusCode == 200) {
             info = JSON.parse(info);
             res.render('schedule', {list: info.data.listCount});
