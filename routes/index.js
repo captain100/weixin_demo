@@ -136,8 +136,6 @@ router.get('/pushMsg', function (req, res) {
 router.post('/template/:openid',function(req, res) {
     console.log('推送消息已到达')
     console.log(req.body);
-    var date = new Date(Number(req.body.msgDueTime));
-    var time = date.getFullYear()+'年'+(date.getMonth()+1)+'月'+date.getDate()+'日'+' '+date.getHours()+':'+date.getMinutes()
     api = new WechatAPI(config.APPID, config.APPSECRET);
     var templateId = '9JDP4C0Q82qwj9AdZEPfOphLrhg1APAanwFZHwA059s';
     // URL置空，则在发送后,点击模板消息会进入一个空白页面（ios）, 或无法点击（android）
@@ -152,7 +150,7 @@ router.post('/template/:openid',function(req, res) {
             "color":"#173177"
         },
         "keyword2": {
-            "value":time,
+            "value":req.body.msgDueTime,
             "color":"#173177"
         },
         "remark":{
