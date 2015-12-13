@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 var config = require('../config');
 var WechatAPI = require('wechat-api');
-var api = new WechatAPI(config.APPID, config.APPSECRET);
+var api =null;
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('showPage', {title: 'Express'});
@@ -135,24 +135,28 @@ router.get('/pushMsg', function (req, res) {
 //推送模版消息
 router.post('/template/:openid',function(req, res) {
     console.log('推送消息已到达')
+    console.log(req.body);
+    var date = new Date(req.body.msgDueTime);
+    var time = date.getFullYear()+'年'+date.getMonth()+'月'+date.getDay()+'日'+' '+date.getHours()+':'+date.getMinutes()
+    api = new WechatAPI(config.APPID, config.APPSECRET);
     var templateId = '9JDP4C0Q82qwj9AdZEPfOphLrhg1APAanwFZHwA059s';
     // URL置空，则在发送后,点击模板消息会进入一个空白页面（ios）, 或无法点击（android）
-    var url = '';
+    var url = config.server+req.body.redirectUrl;
     var data = {
         "first": {
-            "value":"恭喜你购买成功！",
+            "value":req.body.msgTitle,
             "color":"#173177"
         },
         "keyword1":{
-            "value":"巧克力",
+            "value":req.body.msgContent,
             "color":"#173177"
         },
         "keyword2": {
-            "value":"39.8元",
+            "value":time,
             "color":"#173177"
         },
         "remark":{
-            "value":"欢迎再次购买！",
+            "value":req.body.remark,
             "color":"#173177"
         }
     };
