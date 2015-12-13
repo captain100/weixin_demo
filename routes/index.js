@@ -132,8 +132,39 @@ router.get('/pushMsg', function (req, res) {
     });
 });
 
-router.post('/push/:openid', function (req, res) {
+//推送模版消息
+router.post('/template/:openid',function(req, res) {
     console.log(11111111)
+    var templateId = '9JDP4C0Q82qwj9AdZEPfOphLrhg1APAanwFZHwA059s';
+    // URL置空，则在发送后,点击模板消息会进入一个空白页面（ios）, 或无法点击（android）
+    var url = '';
+    var data = {
+        "first": {
+            "value":"恭喜你购买成功！",
+            "color":"#173177"
+        },
+        "keyword1":{
+            "value":"巧克力",
+            "color":"#173177"
+        },
+        "keyword2": {
+            "value":"2014年9月22日",
+            "color":"#173177"
+        },
+        "remark":{
+            "value":"欢迎再次购买！",
+            "color":"#173177"
+        }
+    };
+    var openid = req.param('openid');
+    api.sendTemplate(openid, templateId, url, data, function(err, res){
+        console.log(result);
+        res.json(200, result);
+    });
+});
+
+router.post('/push/:openid', function (req, res) {
+
     var openid = req.param('openid');
     var articles = req.body.articles;
     api.sendNews(openid, articles, function (err, result) {
