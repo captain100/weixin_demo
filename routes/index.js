@@ -222,9 +222,9 @@ router.get('/schedule', function (req, res) {
     //    icon: '',
     //    actionID: '12345678'
     //}];
-    var userAccount = req.query.userAccount ||;
-    var projectUniqNo = req.query.projectUniqNo ||;
-    var scheduleCount = req.query.scheduleCount || ;
+    var userAccount = req.query.userAccount;
+    var projectUniqNo = req.query.projectUniqNo;
+    var scheduleCount = req.query.scheduleCount;
 
     var url = config.server+"/info/task/userCurrentList?userAccount="+userAccount+"&projectUniqNo="+projectUniqNo+"&scheduleCount="+scheduleCount;
     console.log(url);
