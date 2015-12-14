@@ -4,8 +4,8 @@
 $(function() {
     $('.sub_btn').click(function(){
         var paperId = $('#paperId').val();
-        var userAccount = '12345';
-        var taskNo = 'xyz123';
+        var userAccount = $('#userAccount').val();
+        var taskNo = $('#taskNo').val();
         var answers =[];
         for(var i = 0;i<$('.radio_wrap').length;i++){
             var id = $('.radio_wrap')[i].getAttribute('data-questionid');

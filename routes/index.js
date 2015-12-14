@@ -25,6 +25,7 @@ router.get('/subPaper', function (req, res) {
     var data = req.query.data;
     var json = JSON.stringify(data);
     json = JSON.parse(json);
+    console.log('----------------------')
     console.log(json);
     var options = {
         headers: {
@@ -221,12 +222,14 @@ router.get('/schedule', function (req, res) {
     //    icon: '',
     //    actionID: '12345678'
     //}];
+    
     var url = config.server+"/info/task/userCurrentList?userAccount=userAccount11&projectUniqNo=123$1&scheduleCount=1";
+    console.log(url);
     request.get({url:url},function(error,response, info){
         if(error)res.json({error:error});
         if (!error && response.statusCode == 200) {
             info = JSON.parse(info);
-            res.render('schedule', {list: info.data.listCount});
+            res.render('schedule', {list: info.data.listCount,userAccount:info.userAccount});
         }
     })
 });
