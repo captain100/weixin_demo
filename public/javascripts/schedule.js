@@ -8,10 +8,12 @@ $(function(){
         $(collpase).collapse('toggle');
     })
     $('.updateType').click(function(){
+
     	var taskNo = $(this).attr('data-taskNo'),
     	userAccount = $(this).attr('data-userAccount');
+        alert(taskNo);
+
     	$.get('http://123.56.126.231:8080/info/task/userCommitTask?taskNo='+taskNo+'&userAccount='+userAccount,function(data){
-    		// alert(data)
     		  location.reload();
     	})
     })
