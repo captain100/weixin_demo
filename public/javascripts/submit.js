@@ -25,16 +25,19 @@ $(function() {
             'paperId':paperId,
             'answers':answers
         };
-        $.get('/subPaper',{data:data},function(e){
+        var flag = confirm('确认是否提交？');
+        console.log(flag);
+        if(flag){
+            $.get('/subPaper',{data:data},function(e){
             if(e){
-                var flag = confirm('确认是否提交？');
-                console.log(flag);
-                if(flag){
-                    window.location.href='/schedule';
-                }
+                
+                
             }
+            window.location.href='/schedule?userAccount='+userAccount+'&projectUniqNo='+projectUniqNo+'&scheduleCount='+scheduleCount;
 
         })
+        }
+        
 
     });
 });

@@ -214,4 +214,9 @@ router.get('/updateStatus',function (req , res){
 
 })
 
+
+router.get('/linktech',function (req, res){
+    console.log(req);
+})
+
 module.exports = router;
