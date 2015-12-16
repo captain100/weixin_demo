@@ -41,8 +41,8 @@
 
                 <% if (list[i].type == 'alert'){ %>
                 <div class="action-controller col-sm-12">
-                    <a href="" class="btn btn-warning col-sm-offset-1 col-sm-4">取消</a>
-                    <a href="" data-taskNo="<%=list[i].taskNo%>" data-userAccount="<%=data.userAccount%>" class="btn btn-success col-sm-offset-2 col-sm-4 updateType ">完成</a>
+                    <a href="#" class="btn btn-warning col-sm-offset-1 col-sm-4">取消</a>
+                    <a href="/updateStatus?taskNo=<%=list[i].taskNo%>&userAccount=<%=data.userAccount%>&projectUniqNo=<%=data.projectUniqNo%>&scheduleCount=<%=data.scheduleCount%>" class="btn btn-success col-sm-offset-2 col-sm-4 updateType ">完成</a>
                 </div>
                 <% } %>
                 <% if (list[i].type == 'question'){ %>

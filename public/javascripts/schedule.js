@@ -7,14 +7,14 @@ $(function(){
         //alert(collpase);
         $(collpase).collapse('toggle');
     })
-    $('.updateType').click(function(){
+    // $('.updateType').click(function(){
 
-    	var taskNo = $(this).attr('data-taskNo'),
-    	userAccount = $(this).attr('data-userAccount');
-        alert(taskNo);
+    // 	var taskNo = $(this).attr('data-taskNo'),
+    // 	userAccount = $(this).attr('data-userAccount');
 
-    	$.get('http://123.56.126.231:8080/info/task/userCommitTask?taskNo='+taskNo+'&userAccount='+userAccount,function(data){
-    		  location.reload();
-    	})
-    })
+    // 	$.get('http://123.56.126.231:8080/info/task/userCommitTask?taskNo='+taskNo+'&userAccount='+userAccount,function(data){
+
+    // 	})
+        
+    // })
 });

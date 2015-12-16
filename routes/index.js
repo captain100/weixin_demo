@@ -198,5 +198,21 @@ router.get('/schedule', function (req, res) {
     })
 });
 
+router.get('/updateStatus',function (req , res){
+    var taskNo = req.query.taskNo;
+    var userAccount = req.query.userAccount;
+    var projectUniqNo = req.query.projectUniqNo;
+    var scheduleCount = req.query.scheduleCount;
+    // http://123.56.126.231:8080/info/task/userCommitTask?taskNo='+taskNo+'&userAccount='+userAccount
+    request.get(config.server+'info/task/userCommitTask?taskNo='+taskNo+'&userAccount='+userAccount,function(error,response, info){
+        if(error)res.json({error:error});
+        if (!error && response.statusCode == 200) {
+            info = JSON.parse(info);
+            console.log(info)
+            res.redirect('/schedule?userAccount='+userAccount+'&projectUniqNo='+projectUniqNo+'&scheduleCount='+scheduleCount)
+        }
+    })
+
+})
 
 module.exports = router;
