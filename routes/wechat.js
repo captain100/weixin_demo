@@ -32,6 +32,9 @@ router.use(wechat(wechat_config, function (req, res, next) {
             picurl: 'http://123.56.227.132/images/question.jpg',
             url: 'http://123.56.227.132/schedule'
         }]);
+    } else if (message.Event === 'CLICK' && message.EventKey === 'CREAT_TASK_1') {
+        var openid =  message.FromUserName;
+        res.redirect('/createTask?openid='+openid);
     } else {
         res.reply({
             content: '欢迎你加入由XX公司提供的XX试验。在此之前请确认你是否已经在你的主治医师的指导下签署书面合同已经签署请\n回复：是\n否则请联系你的主治医师',

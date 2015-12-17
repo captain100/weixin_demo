@@ -178,7 +178,7 @@ router.get('/createMenu',function (req, res, next){
            {
              "type":"click",
              "name":"获取任务提示",
-             "key":"V1001_TODAY_MUSIC",
+             "key":"CREAT_TASK_",
              "url":'http://123.56.126.231:8080/info/task/createTaskList?userAccount=oewo7wMrPRdkfCxLhkQ0qTTMyRME&projectUniqNo=123$1'
            }]
     }
@@ -189,10 +189,12 @@ router.get('/createMenu',function (req, res, next){
     });
 });
 
-// router.get('/createTask', function (req ,res){
-//     api = new WechatAPI(config.APPID, config.APPSECRET);
+router.get('/createTask', function (req ,res){
+    var openid = req.query.openid;
+    console.log(openid);
 
-// })
+
+})
 
 
 
