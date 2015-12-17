@@ -189,11 +189,13 @@ router.get('/createMenu',function (req, res, next){
     });
 });
 
-router.get('/createTask', function (req ,res){
+router.get('/createTask', function (req ,res, next){
     var openid = req.query.openid;
     console.log(openid);
-
-
+    request(config.server+'/info/task/createTaskList?userAccount='+openid+'&projectUniqNo=123$1',function (error, response, info ){
+        console.log(info);
+        next();
+    })
 })
 
 
