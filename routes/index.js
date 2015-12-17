@@ -178,8 +178,8 @@ router.get('/createMenu',function (req, res, next){
            {
              "type":"click",
              "name":"获取任务提示",
-             "key":"CREAT_TASK_",
-             "url":'http://123.56.126.231:8080/info/task/createTaskList?userAccount=oewo7wMrPRdkfCxLhkQ0qTTMyRME&projectUniqNo=123$1'
+             "key":"CREAT_TASK_1",
+             "url":''
            }]
     }
     api.createMenu(menu, function(error,info){
