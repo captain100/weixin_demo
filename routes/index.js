@@ -169,6 +169,33 @@ router.post('/template/:openid',function(req, res) {
     });
 });
 
+
+
+router.get('/createMenu',function (req, res, next){
+    api = new WechatAPI(config.APPID, config.APPSECRET);
+    var menu = {
+        "button":[
+           {
+             "type":"click",
+             "name":"获取任务提示",
+             "key":"V1001_TODAY_MUSIC",
+             "url":'http://123.56.126.231:8080/info/task/createTaskList?userAccount=oewo7wMrPRdkfCxLhkQ0qTTMyRME&projectUniqNo=123$1'
+           }]
+    }
+    api.createMenu(menu, function(error,info){
+        console.log(error);
+        console.log(info);
+        next();
+    });
+});
+
+// router.get('/createTask', function (req ,res){
+//     api = new WechatAPI(config.APPID, config.APPSECRET);
+
+// })
+
+
+
 router.post('/push/:openid', function (req, res) {
 
     var openid = req.param('openid');
@@ -215,6 +242,10 @@ router.get('/updateStatus',function (req , res){
 })
 
 
+
+
+
+//得到linktech的acshback的回执信息
 router.get('/linktech',function (req, res){
     console.log(req);
 })

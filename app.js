@@ -42,7 +42,7 @@ app.use('/users', users);
 app.use('/wechartenterprise',wechartenterprise);
 
 //微信后台信息
-app.use('/wechat', wechat);
+// app.use('/wechat', wechat);
 
 //用户认证路由
 app.use('/auth', auth);
