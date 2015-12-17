@@ -1,6 +1,7 @@
 
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 
 var wechat = require('wechat');
 var wechat_config = {
@@ -34,7 +35,11 @@ router.use(wechat(wechat_config, function (req, res, next) {
         }]);
     } else if (message.Event === 'CLICK' && message.EventKey === 'CREAT_TASK_1') {
         var openid =  message.FromUserName;
-        res.redirect('/createTask?openid='+openid);
+        request('http://www.cpzero.cn/createTask?openid='+openid,function (error, response, info){
+            console.log('hahaahh');
+            next();
+        })
+       
     } else {
         res.reply({
             content: '欢迎你加入由XX公司提供的XX试验。在此之前请确认你是否已经在你的主治医师的指导下签署书面合同已经签署请\n回复：是\n否则请联系你的主治医师',
