@@ -29,11 +29,12 @@ $(function() {
         console.log(flag);
         if(flag){
             $.get('/subPaper',{data:data},function(e){
-            if(e){
+            // if(e){
                 
                 
-            }
-            window.location.href='/schedule?userAccount='+userAccount+'&projectUniqNo='+projectUniqNo+'&scheduleCount='+scheduleCount;
+            // }
+             // history.go(-1);
+            window.location.href='http://www.cpzero.cn/schedule?userAccount=oewo7wMrPRdkfCxLhkQ0qTTMyRME&projectUniqNo=123$1&scheduleCount=1';
 
         })
         }
