@@ -145,7 +145,8 @@ router.post('/template/:openid',function(req, res) {
     var data = {
         "first": {
             "value":req.body.msgTitle,
-            "color":"#173177"
+            "color":"#173177",
+            "font-size":"100px"
         },
         "keyword1":{
             "value":req.body.msgContent,
@@ -238,12 +239,12 @@ router.get('/updateStatus',function (req , res){
     request.get(config.server+'/info/task/userCommitTask?taskNo='+taskNo+'&userAccount='+userAccount,function(error,response, info){
         if(error)res.json({error:error});
         if (!error && response.statusCode == 200) {
-            console.log(info)
+            console.log(info);
             res.redirect('/schedule?userAccount='+userAccount+'&projectUniqNo='+projectUniqNo+'&scheduleCount='+scheduleCount)
         }
     })
 
-})
+});
 
 
 
@@ -252,6 +253,6 @@ router.get('/updateStatus',function (req , res){
 //得到linktech的acshback的回执信息
 router.get('/linktech',function (req, res){
     console.log(req);
-})
+});
 
 module.exports = router;
