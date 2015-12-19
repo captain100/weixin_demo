@@ -73,11 +73,12 @@
                     <p><br></p>
                 </div>
 
-               
+               <%if(!list[i].isDone){%>
+
                 <div class="action-controller">
                     <a href="<%= list[i].url %>" class="btn btn-primary col-xs-12">进行问卷调查</a>
                 </div>
-                <% } %>
+                <% }} %>
 
             </div>
         </div>
