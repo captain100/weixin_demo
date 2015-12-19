@@ -3,6 +3,7 @@ var router = express.Router();
 var request = require('request');
 var config = require('../config');
 var WechatAPI = require('wechat-api');
+var async = require('async');
 var api =null;
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -25,7 +26,6 @@ router.get('/subPaper', function (req, res) {
     var data = req.query.data;
     var json = JSON.stringify(data);
     json = JSON.parse(json);
-    console.log('----------------------')
     console.log(json);
     var options = {
         headers: {
@@ -219,14 +219,43 @@ router.get('/schedule', function (req, res) {
 
     var url = config.server+"/info/task/userCurrentList?userAccount="+userAccount+"&projectUniqNo="+projectUniqNo+"&scheduleCount="+scheduleCount;
     console.log(url);
-    request.get({url:url},function(error,response, info){
-        if(error)res.json({error:error});
-        if (!error && response.statusCode == 200) {
-            info = JSON.parse(info);
-            console.log(info)
-            res.render('schedule', {data: info.data});
+
+    async.parallel({
+        data:function(cb){
+            request.get({url:url},function(error,response, info){
+            if(error)res.json({error:error});
+            if (!error && response.statusCode == 200) {
+                info = JSON.parse(info);
+                console.log(info)
+                // res.render('schedule', {data: info.data});
+                cb(null, info.data);
+            }
+            })
+        },
+        user:function(cb){
+            api = new WechatAPI(config.APPID, config.APPSECRET);
+            api.getUser(userAccount, function (error,userInfo){
+                console.log(error+' |  '+userInfo)
+                cb(null, userInfo);
+            });
+
         }
+    },function (error, result){
+        console.log(result)
+        res.render('schedule', result);
+
     })
+
+
+
+    // request.get({url:url},function(error,response, info){
+    //     if(error)res.json({error:error});
+    //     if (!error && response.statusCode == 200) {
+    //         info = JSON.parse(info);
+    //         console.log(info)
+    //         res.render('schedule', {data: info.data});
+    //     }
+    // })
 });
 
 router.get('/updateStatus',function (req , res){

@@ -18,25 +18,24 @@ router.use(wechat(wechat_config, function (req, res, next) {
     if (message.Content === 'qiushi') {
         // 回复qiushi(普通回复)
         res.reply('hehe');
-    } else if (message.Content === '是') {
-        //你也可以这样回复text类型的信息
-        res.reply([{
-            title: 'Schedule Day 1',
-            description: '今天是个重要的日子，你有一些事情需要完成快来查看。',
-            picurl: 'http://123.56.227.132/images/question.jpg',
-            url: 'http://123.56.227.132/schedule'
-        }]);
-    } else if (message.Content === 'schedule day1') {
-        res.reply([{
-            title: 'Schedule Day 1',
-            description: '今天是个重要的日子，你有一些事情需要完成快来查看。',
-            picurl: 'http://123.56.227.132/images/question.jpg',
-            url: 'http://123.56.227.132/schedule'
-        }]);
+    //} else if (message.Content === '是') {
+    //    //你也可以这样回复text类型的信息
+    //    res.reply([{
+    //        title: 'Schedule Day 1',
+    //        description: '今天是个重要的日子，你有一些事情需要完成快来查看。',
+    //        picurl: 'http://123.56.227.132/images/question.jpg',
+    //        url: 'http://123.56.227.132/schedule'
+    //    }]);
+    //} else if (message.Content === 'schedule day1') {
+    //    res.reply([{
+    //        title: 'Schedule Day 1',
+    //        description: '今天是个重要的日子，你有一些事情需要完成快来查看。',
+    //        picurl: 'http://123.56.227.132/images/question.jpg',
+    //        url: 'http://123.56.227.132/schedule'
+    //    }]);
     } else if (message.Event === 'CLICK' && message.EventKey === 'CREAT_TASK_1') {
         var openid =  message.FromUserName;
         request('http://www.cpzero.cn/createTask?openid='+openid,function (error, response, info){
-            console.log('hahaahh');
             next();
         })
        

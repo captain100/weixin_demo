@@ -19,6 +19,22 @@
 <body>
 
 <% var list = data.listCount %>
+
+<section class="my_info_header">
+    <div class="my_user">
+        <b id="userImg" style="position: relative;">
+            <div class="image-box">
+                <img src="//life-img.coolfishstudio.com/b7a4a688ae7f89942d5fb88261adbc6a@100w_1l" style="opacity: 1; left: 0px; right: 0px; top: 0px; height: 95px;">
+            </div>
+        </b>
+        <p id="userName">
+            <label>name</label>
+        </p>
+    </div>
+</section>
+
+
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% for(var i = 0 ; i < list.length; i++){ %>
     <div class="panel panel-default">
@@ -51,7 +67,7 @@
                 <% } %>
                 <% if (list[i].type == 'question'){ %>
                 <div class="col-xs-12">
-                    <img src="images/wj_ban.jpg" style= "width:100%;">
+                    <img src="images/2015071705532182.jpg" style= "width:100%;">
                 </div>
                 <div class="col-xs-12">
                     <p><br></p>
