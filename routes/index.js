@@ -145,8 +145,7 @@ router.post('/template/:openid',function(req, res) {
     var data = {
         "first": {
             "value":req.body.msgTitle,
-            "color":"#173177",
-            "font-size":"100px"
+            "color":"#173177"
         },
         "keyword1":{
             "value":req.body.msgContent,
