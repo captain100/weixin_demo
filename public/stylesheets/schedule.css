@@ -73,15 +73,26 @@ ul, ol, li {
     height: 160px;
     position: relative;
     color: #fff;
-    background: skyblue;
+    /*background:url('../images/userInfoBackground.jpg') no-repeat;*/
     background-size: cover;
     text-align: center;
     border-bottom: 1px solid #d7d7d7;
+    overflow: hidden;
 
+}
+.blur {   
+    position: absolute;
+    top: -64px;
+    left: -120px;
+    -webkit-filter: blur(1px); /* Chrome, Opera */
+       -moz-filter: blur(1px);
+        -ms-filter: blur(1px);   
+            filter: blur(1px);   
 }
 .my_info_header .my_user {
     margin: 30px 0 0;
     display: inline-block;
+    color: #fff;
 }
 .image-box {
     position: relative;
@@ -102,3 +113,15 @@ ul, ol, li {
     border-radius: 50%;
     -webkit-border-radius: 50%;
 }
+.my_info_header .my_user .userName{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #000;
+    font-size: 17px;
+    font-weight: 700;
+    position: relative;
+
+
+}
+
+

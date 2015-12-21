@@ -21,15 +21,16 @@
 <% var list = data.listCount %>
 
 <section class="my_info_header">
+    <img src="images/userInfoBackground_2.jpg" class="blur">
     <div class="my_user">
         <b id="userImg" style="position: relative;">
             <div class="image-box">
                 <img src="<%=user.headimgurl%>" style="opacity: 1; left: 0px; right: 0px; top: 0px; height: 95px;">
             </div>
         </b>
-        <p id="userName">
-            <label><%=user.nickname%></label>
-        </p>
+        <div class="userName">
+            <%=user.nickname%>
+        </div>
     </div>
 </section>
 
