@@ -33,8 +33,8 @@ $(function() {
                 
                 
             // }
-             // history.go(-1);
-            window.location.href='http://www.cpzero.cn/schedule?userAccount=oewo7wMrPRdkfCxLhkQ0qTTMyRME&projectUniqNo=123$1&scheduleCount=1';
+            // console.log(e.info.data.userAccount);
+            window.location.href='http://www.cpzero.cn/schedule?userAccount='+e.info.data.userAccount+'&projectUniqNo='+e.info.data.projectUniqNo+'&scheduleCount=1';
 
         })
         }
